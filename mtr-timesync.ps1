@@ -6,8 +6,8 @@ Provides reliable time for Teams Meeting Rooms that are Azure AD joined by doing
 
 n.b. if you're testing this on a VM, disable your VM tools/additions/integrations native time sync first... *sigh*
 #>
-
+ 
 sc.exe triggerinfo w32time start/networkon stop/networkoff
-w32tm /config /manualpeerlist:time.windows.com,0x8 /syncfromflags:MANUAL
+w32tm /config /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org",0x8 /syncfromflags:MANUAL
 restart-service w32time
 w32tm /resync
